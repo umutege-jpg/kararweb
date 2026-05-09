@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="light scroll-smooth" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch Decide | Karar Vermek Artık Çok Kolay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {                  
+          extend: {
+            "colors": {
+                    "surface-container": "#e7eeff",
+                    "primary": "#3525cd",
+                    "outline-variant": "#c7c4d8",
+                    "primary-container": "#4f46e5",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#86f2e4",
+                    "surface-container-highest": "#d8e3fb",
+                    "inverse-primary": "#c3c0ff",
+                    "tertiary-container": "#5f5f69",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-variant": "#d8e3fb",
+                    "on-secondary-fixed-variant": "#005049",
+                    "on-tertiary-fixed-variant": "#46464f",
+                    "secondary-fixed": "#89f5e7",
+                    "surface-dim": "#cfdaf2",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#111c2d",
+                    "surface": "#f9f9ff",
+                    "on-secondary-fixed": "#00201d",
+                    "tertiary-fixed-dim": "#c7c5d1",
+                    "on-tertiary-container": "#dbdae5",
+                    "surface-bright": "#f9f9ff",
+                    "surface-tint": "#4d44e3",
+                    "surface-container-low": "#f0f3ff",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#dad7ff",
+                    "outline": "#777587",
+                    "on-tertiary-fixed": "#1a1b23",
+                    "secondary": "#006a61",
+                    "on-surface": "#111c2d",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#464555",
+                    "tertiary-fixed": "#e3e1ed",
+                    "inverse-surface": "#263143",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#006f66",
+                    "surface-container-high": "#dee8ff",
+                    "primary-fixed": "#e2dfff",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#0f0069",
+                    "inverse-on-surface": "#ecf1ff",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "tertiary": "#474751",
+                    "background": "#f9f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-md": "24px",
+                    "unit": "8px",
+                    "container-max": "1140px",
+                    "stack-lg": "48px",
+                    "stack-sm": "12px",
+                    "section-padding": "80px"
+            },
+            "fontFamily": {
+                    "h2": ["Manrope"],
+                    "label-caps": ["Inter"],
+                    "h1": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display": ["Manrope"]
+            },
+            "fontSize": {
+                    "h2": ["24px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "h1": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(53, 37, 205, 0.05);
+            transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .gradient-bg {
+            background: radial-gradient(circle at top left, #f0f3ff 0%, #ffffff 40%, #e7eeff 100%);
+            transition: background 0.5s ease;
+        }
+        .dark .gradient-bg {
+            background: radial-gradient(circle at top left, #0f172a 0%, #020617 100%);
+        }
+        html, body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background dark:text-slate-200 gradient-bg min-h-screen flex flex-col">
+<!-- Login Modal -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-overlay hidden" id="loginModal">
+<div class="glass-card w-full max-w-md p-8 rounded-xl relative animate-in fade-in zoom-in duration-300">
+<button class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors" onclick="toggleModal('loginModal')">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="text-center mb-8">
+<h2 class="font-h1 text-h1 text-on-surface dark:text-white mb-2">Giriş Yap</h2>
+<p class="text-on-surface-variant dark:text-slate-400">Hesabınıza erişerek kararlarınızı kaydedin.</p>
+</div>
+<form class="space-y-6" id="loginForm">
+<div class="relative group">
+<input class="w-full bg-transparent border-b-2 border-outline-variant dark:border-slate-700 focus:border-primary dark:focus:border-indigo-400 py-3 px-2 outline-none font-body-md text-on-surface dark:text-white transition-colors placeholder:text-outline/50 dark:placeholder:text-slate-500" placeholder="E-posta" required="" type="email"/>
+<div class="absolute bottom-0 left-0 h-0.5 w-0 bg-primary dark:bg-indigo-400 group-focus-within:w-full transition-all duration-500"></div>
+</div>
+<div class="relative group">
+<input class="w-full bg-transparent border-b-2 border-outline-variant dark:border-slate-700 focus:border-primary dark:focus:border-indigo-400 py-3 px-2 outline-none font-body-md text-on-surface dark:text-white transition-colors placeholder:text-outline/50 dark:placeholder:text-slate-500" placeholder="Şifre" required="" type="password"/>
+<div class="absolute bottom-0 left-0 h-0.5 w-0 bg-primary dark:bg-indigo-400 group-focus-within:w-full transition-all duration-500"></div>
+</div>
+<button class="w-full bg-primary dark:bg-indigo-600 text-on-primary py-4 rounded-lg font-h2 text-h2 hover:shadow-lg hover:-translate-y-1 active:scale-95 transition-all duration-300" id="loginSubmitBtn" type="submit">
+                Giriş Yap
+            </button>
+</form>
+<div class="mt-6 text-center text-sm text-on-surface-variant dark:text-slate-400">
+            Hesabınız yok mu? <a class="text-primary dark:text-indigo-400 font-semibold hover:underline" href="#">Kayıt Olun</a>
+</div>
+</div>
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-white/20 dark:border-slate-800/50 shadow-sm transition-colors duration-500">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<div class="text-2xl font-extrabold tracking-tighter text-indigo-600 dark:text-indigo-400 font-h1">
+                Stitch Decide
+            </div>
+<div class="hidden md:flex items-center gap-8 font-manrope text-sm tracking-wide">
+<a class="text-indigo-600 dark:text-indigo-400 font-bold border-b-2 border-indigo-600 dark:border-indigo-400 px-1 py-2" href="#home">Ana Sayfa</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition-all duration-300" href="#decision-engine">Keşfet</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition-all duration-300" href="#features">Özellikler</a>
+</div>
+<div class="flex items-center gap-4">
+<!-- Dark Mode Toggle -->
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-all duration-300" onclick="toggleDarkMode()" title="Temayı Değiştir">
+<span class="material-symbols-outlined dark:hidden" data-icon="dark_mode">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block" data-icon="light_mode">light_mode</span>
+</button>
+<button class="text-slate-600 dark:text-slate-400 hover:text-indigo-500 transition-all duration-300 font-manrope text-sm font-medium" onclick="toggleModal('loginModal')">Giriş Yap</button>
+<button class="bg-primary-container text-white px-6 py-2.5 rounded-full font-manrope text-sm font-bold hover:shadow-lg active:scale-95 transition-all duration-200">Kayıt Ol</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-32 pb-section-padding px-gutter max-w-7xl mx-auto w-full flex flex-col items-center" id="home">
+<!-- Hero Section -->
+<section class="text-center max-w-3xl mb-stack-lg">
+<h1 class="font-display text-display text-on-surface dark:text-white mb-stack-sm">
+                Karar Vermek Artık Çok Kolay.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant dark:text-slate-400">
+                Ne yapacağınızı bilemiyor musunuz? Bırakın Stitch Decide sizin yerinize karar versin. Zihninizi özgür bırakın ve akışa güvenin.
+            </p>
+</section>
+<!-- Interaction Area -->
+<section class="w-full max-w-2xl" id="decision-engine">
+<div class="glass-card p-stack-lg rounded-xl flex flex-col gap-stack-md transition-all duration-500">
+<div class="relative group">
+<input class="w-full bg-transparent border-b-2 border-outline-variant dark:border-slate-700 focus:border-primary dark:focus:border-indigo-400 py-4 px-2 outline-none font-body-lg text-on-surface dark:text-white transition-colors placeholder:text-outline/50 dark:placeholder:text-slate-500" id="decisionInput" placeholder="Ne hakkında karar vermek istiyorsun? (Örn: Ne yesem?, Ne izlesem?)" type="text"/>
+<div class="absolute bottom-0 left-0 h-0.5 w-0 bg-primary dark:bg-indigo-400 group-focus-within:w-full transition-all duration-500"></div>
+</div>
+<button class="bg-primary dark:bg-indigo-600 text-on-primary py-5 rounded-lg font-h2 text-h2 hover:shadow-[0_20px_50px_rgba(53,37,205,0.15)] hover:-translate-y-1 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3" id="decideBtn">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+                    Benim Yerime Karar Ver
+                </button>
+</div>
+<!-- Result Display -->
+<div class="mt-12 glass-card p-10 rounded-xl border-secondary/30 dark:border-indigo-500/30 flex flex-col items-center text-center gap-6 shadow-xl hidden" id="resultCard">
+<div class="text-label-caps text-secondary dark:text-indigo-300 font-label-caps tracking-widest bg-secondary-container/30 dark:bg-indigo-900/30 px-4 py-1 rounded-full">
+                    SİZİN İÇİN SEÇTİĞİMİZ
+                </div>
+<div class="font-display text-display text-primary dark:text-indigo-400 animate-pulse" id="resultText">
+                    En Yakın İtalyan Restoranı
+                </div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-6 py-3 border border-secondary dark:border-indigo-400 text-secondary dark:text-indigo-400 rounded-full font-manrope text-sm font-semibold hover:bg-secondary-container/20 dark:hover:bg-indigo-900/20 transition-all active:scale-95" id="retryBtn">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+                        Tekrar Dene
+                    </button>
+<button class="flex items-center gap-2 px-6 py-3 bg-surface-container-highest dark:bg-slate-800 text-on-surface dark:text-slate-200 rounded-full font-manrope text-sm font-semibold hover:bg-surface-container-high dark:hover:bg-slate-700 transition-all">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+                        Paylaş
+                    </button>
+</div>
+</div>
+</section>
+<!-- Visual Asset -->
+<section class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-gutter w-full" id="features">
+<div class="glass-card p-6 rounded-xl overflow-hidden aspect-video flex items-center justify-center relative">
+<img alt="Clarity workspace" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDyTZTcTpnfRGk8UfwNx6OPeuxHGg6tcWuSiuE7Y63lughSLDFyxr7tzQvBU8HwZLRnUhKRhNJ8-3Ahyk0CandHOJB73OeYLV0EJxaKtz5fiLVnCwUkM57Z8fnY0UevUtXNsutaWqqU1VfMe-6LK6r7FrJrLrkuEb9l7UNOHr-AIf4cIzb4uGAk_2GwVwCa7MDxKDpqgGyayRf65etk53qaRzYxcsGLGhmYmgfg-_zIE2VPj1R3XAJM17RUWKPwWdKnVl5y7L4HuIA"/>
+<div class="relative z-10 text-center">
+<h3 class="font-h2 text-h2 text-primary dark:text-indigo-400">Hızlı</h3>
+<p class="text-body-md text-on-surface-variant dark:text-slate-400">Saniyeler içinde sonuç</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl overflow-hidden aspect-video flex items-center justify-center relative">
+<img alt="Abstract connection" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqGfJpJCDoPw5_NipcIumjq1BAfpeLjC4g1o4g1h9oETOUoVaBZMKqpIUnbWhMjPW_af8t3daismSiCboKa6ur-i2YTidUpyKtN28emazQ5BIYh8MPxdP70qdJKchRxTi8arSpaEPWukAdhRQnZ2ODYvUWXcXmR_NJDN4vCv1Gxq--joIDT6RzpGJYaMpPuj0Hie6TLqK6NeEexsMzguSrfthuSX6NscZGxqtP9olTrN4CS9z0bNnzWQNA2AIOg_j4mpRj7kZjtAyE"/>
+<div class="relative z-10 text-center">
+<h3 class="font-h2 text-h2 text-primary dark:text-indigo-400">Zarif</h3>
+<p class="text-body-md text-on-surface-variant dark:text-slate-400">Göz yormayan tasarım</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl overflow-hidden aspect-video flex items-center justify-center relative">
+<img alt="Prism clarity" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKWTk0qmPW8bviLEQSXODRXo9AhCa9rKFRv160xroxrMBs31MoiqGgX6HQmr8MsrPYky18NRQr4PZwh3wgcDIKxVPPv5PTmKPqJHm1K_yRu_5J25CbntXTtz0k9Zdoh_wlRYw5OjP2IzC6eTj96ObCNr9MsQjXKAdCtOTf2wuwoMAfbRl2Bm6O1gaeOH6SUscp2NQdtspZIRInyECs62fQCJnbtfYBO3UG1nJxmMXhX3rbIVjk1De5aMUdNQe5Aiqb27hI3Of02uLH"/>
+<div class="relative z-10 text-center">
+<h3 class="font-h2 text-h2 text-primary dark:text-indigo-400">Akıllı</h3>
+<p class="text-body-md text-on-surface-variant dark:text-slate-400">Mantıklı seçimler</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer / Contact Section -->
+<section class="w-full max-w-7xl mx-auto px-gutter mb-section-padding" id="contact">
+<div class="glass-card p-stack-lg rounded-xl overflow-hidden">
+<div class="text-center mb-stack-lg" id="contactHeader">
+<h2 class="font-display text-h1 text-on-surface dark:text-white mb-stack-sm">İletişim</h2>
+<p class="font-body-md text-on-surface-variant dark:text-slate-400">Sorularınız veya geri bildirimleriniz için bize ulaşın.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg items-start" id="contactContent">
+<!-- Contact Details -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4 text-on-surface-variant dark:text-slate-300">
+<div class="bg-primary/10 dark:bg-indigo-500/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-indigo-400">mail</span>
+</div>
+<div>
+<p class="text-label-caps opacity-60">E-POSTA ADRESİMİZ</p>
+<p class="font-body-lg font-semibold">merhaba@stitchdecide.com</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant dark:text-slate-300">
+<div class="bg-primary/10 dark:bg-indigo-500/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-indigo-400">location_on</span>
+</div>
+<div>
+<p class="text-label-caps opacity-60">KONUM</p>
+<p class="font-body-lg font-semibold">İstanbul, Türkiye</p>
+</div>
+</div>
+</div>
+<!-- Contact Form -->
+<form class="flex flex-col gap-6" id="contactForm">
+<div class="relative group">
+<input class="w-full bg-transparent border-b-2 border-outline-variant dark:border-slate-700 focus:border-primary dark:focus:border-indigo-400 py-3 px-2 outline-none font-body-md text-on-surface dark:text-white transition-colors placeholder:text-outline/50 dark:placeholder:text-slate-500" id="contactName" placeholder="Ad Soyad" required="" type="text"/>
+<div class="absolute bottom-0 left-0 h-0.5 w-0 bg-primary dark:bg-indigo-400 group-focus-within:w-full transition-all duration-500"></div>
+</div>
+<div class="relative group">
+<input class="w-full bg-transparent border-b-2 border-outline-variant dark:border-slate-700 focus:border-primary dark:focus:border-indigo-400 py-3 px-2 outline-none font-body-md text-on-surface dark:text-white transition-colors placeholder:text-outline/50 dark:placeholder:text-slate-500" id="contactEmail" placeholder="E-posta" required="" type="email"/>
+<div class="absolute bottom-0 left-0 h-0.5 w-0 bg-primary dark:bg-indigo-400 group-focus-within:w-full transition-all duration-500"></div>
+</div>
+<div class="relative group">
+<textarea class="w-full bg-transparent border-b-2 border-outline-variant dark:border-slate-700 focus:border-primary dark:focus:border-indigo-400 py-3 px-2 outline-none font-body-md text-on-surface dark:text-white transition-colors placeholder:text-outline/50 dark:placeholder:text-slate-500 resize-none" id="contactMessage" placeholder="Mesajınız" required="" rows="3"></textarea>
+<div class="absolute bottom-0 left-0 h-0.5 w-0 bg-primary dark:bg-indigo-400 group-focus-within:w-full transition-all duration-500"></div>
+</div>
+<button class="bg-primary dark:bg-indigo-600 text-on-primary py-4 rounded-lg font-h2 text-h2 hover:shadow-lg hover:-translate-y-1 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3" id="contactSubmitBtn" type="submit">
+<span class="material-symbols-outlined">send</span>
+          Gönder
+        </button>
+</form>
+<!-- Success State (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center text-center py-12 gap-6 w-full col-span-full" id="contactSuccess">
+<div class="w-20 h-20 bg-secondary-container/30 dark:bg-indigo-900/30 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-secondary dark:text-indigo-300">check_circle</span>
+</div>
+<div class="space-y-2">
+<h3 class="font-h1 text-h1 text-on-surface dark:text-white">Mesajınız Gönderildi!</h3>
+<p class="text-on-surface-variant dark:text-slate-400">En kısa sürede size geri dönüş yapacağız. Stitch Decide'ı kullandığınız için teşekkürler.</p>
+</div>
+<button class="text-primary dark:text-indigo-400 font-semibold hover:underline mt-4" onclick="resetContactForm()">Yeni Mesaj Gönder</button>
+</div>
+</div>
+</div>
+</section>
+<footer class="w-full py-12 border-t border-slate-100 dark:border-slate-800/50 bg-transparent transition-colors duration-500">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-8 gap-4">
+<div class="font-manrope text-xs font-medium uppercase tracking-widest text-slate-400 dark:text-slate-500">
+                © 2024 Stitch Decide. Decisions made fluid.
+            </div>
+<div class="flex gap-8">
+<a class="font-manrope text-xs font-medium uppercase tracking-widest text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors duration-300" href="#">Gizlilik Politikası</a>
+<a class="font-manrope text-xs font-medium uppercase tracking-widest text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors duration-300" href="#">Hizmet Şartları</a>
+<a class="font-manrope text-xs font-medium uppercase tracking-widest text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors duration-300" href="#contact">Geri Bildirim</a>
+</div>
+</div>
+</footer>
+<!-- Notification Toast -->
+<div class="fixed bottom-8 right-8 z-[110] transform translate-y-20 opacity-0 transition-all duration-500 pointer-events-none" id="notification">
+<div class="glass-card px-6 py-4 rounded-lg flex items-center gap-3 border-secondary/50">
+<span class="material-symbols-outlined text-secondary dark:text-indigo-300" id="notificationIcon">check_circle</span>
+<span class="font-semibold text-on-surface dark:text-white" id="notificationText">İşlem Başarılı</span>
+</div>
+</div>
+<script>
+  const suggestions = {
+    yemek: ['Lahmacun', 'Pizza', 'Ev Yemeği', 'Burger', 'Sushi', 'Kebap', 'Salata', 'Mantı'],
+    film: ['Yıldızlararası', 'Inception', 'Parazit', 'Geleceğe Dönüş', 'Kara Şövalye', 'Yüzüklerin Efendisi'],
+    aktivite: ['Yürüyüşe çık', 'Kitap oku', 'Yeni bir dil öğren', 'Meditasyon yap', 'Müze gez', 'Spor yap'],
+    genel: ['Biraz uyu', 'Arkadaşını ara', 'Derin bir nefes al', 'Şansını zorlama', 'Yarın tekrar sor']
+  };
+
+  function getRandomItem(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function showNotification(message, type = 'success') {
+    const toast = document.getElementById('notification');
+    const text = document.getElementById('notificationText');
+    const icon = document.getElementById('notificationIcon');
+
+    text.textContent = message;
+    icon.textContent = type === 'success' ? 'check_circle' : 'warning';
+
+    toast.classList.remove('translate-y-20', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.add('translate-y-20', 'opacity-0');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 3000);
+  }
+
+  function makeDecision() {
+    const input = document.getElementById('decisionInput').value.toLowerCase().trim();
+
+    if (!input) {
+      showNotification('Bir şey yazmadan karar vermem 😄', 'warning');
+      return;
+    }
+
+    let result;
+    if (input.includes('yemek') || input.includes('ne yesem')) {
+      result = getRandomItem(suggestions.yemek);
+    } else if (input.includes('film') || input.includes('izlesem')) {
+      result = getRandomItem(suggestions.film);
+    } else if (input.includes('aktivite') || input.includes('etsek') || input.includes('yapsam')) {
+      result = getRandomItem(suggestions.aktivite);
+    } else {
+      result = getRandomItem(suggestions.genel);
+    }
+
+    const resultCard = document.getElementById('resultCard');
+    const resultText = document.getElementById('resultText');
+
+    resultText.textContent = result;
+    resultCard.classList.remove('hidden');
+    resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function toggleModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.classList.toggle('hidden');
+    document.body.style.overflow = modal.classList.contains('hidden') ? 'auto' : 'hidden';
+  }
+
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+  }
+
+  function resetContactForm() {
+    document.getElementById('contactForm').reset();
+    document.getElementById('contactSuccess').classList.add('hidden');
+    document.getElementById('contactSuccess').classList.remove('flex');
+    document.getElementById('contactContent').classList.remove('hidden');
+    document.getElementById('contactHeader').classList.remove('hidden');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('decideBtn').addEventListener('click', makeDecision);
+    document.getElementById('retryBtn').addEventListener('click', makeDecision);
+    document.getElementById('decisionInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') makeDecision();
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+
+      const btn = document.getElementById('contactSubmitBtn');
+      const originalText = btn.innerHTML;
+
+      if (!name || !email || !message) {
+        showNotification('Lütfen tüm alanları doldurun.', 'warning');
+        return;
+      }
+
+      btn.innerHTML = '<span class="animate-spin material-symbols-outlined">refresh</span> Gönderiliyor...';
+      btn.disabled = true;
+
+      const subject = encodeURIComponent(`Stitch Decide İletişim Formu: ${name}`);
+      const body = encodeURIComponent(`Gönderen: ${name} (${email})\r\n\r\nMesaj:\r\n${message}`);
+      const mailtoLink = `mailto:umutegeunvr@gmail.com?subject=${subject}&body=${body}`;
+
+      const link = document.createElement('a');
+      link.href = mailtoLink;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      document.getElementById('contactContent').classList.add('hidden');
+      document.getElementById('contactHeader').classList.add('hidden');
+      document.getElementById('contactSuccess').classList.remove('hidden');
+      document.getElementById('contactSuccess').classList.add('flex');
+      showNotification('Mesajınız hazırlanıyor...', 'success');
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('loginSubmitBtn');
+      const originalText = btn.textContent;
+      btn.textContent = 'Giriş Yapılıyor...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        toggleModal('loginModal');
+        showNotification('Başarıyla giriş yapıldı. Hoş geldiniz!', 'success');
+        btn.textContent = originalText;
+        btn.disabled = false;
+        this.reset();
+      }, 1500);
+    });
+  });
+</script>
+</body></html>
